@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const { books } = require("./model/index");
-const { where } = require("sequelize");
+
 //Database Connection
 require("./model/index");
 
