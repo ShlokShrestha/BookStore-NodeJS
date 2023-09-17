@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const { books } = require("./model/index");
 
-//Database Connection
+//DATABASE CONNECTION
 require("./model/index");
 
 //RENDER VIEW PAGE
@@ -18,6 +18,7 @@ app.get("/", async (req, res) => {
   res.render("book.ejs", { book: allbook });
 });
 
+//CREATE VIEW CREATEBOOK PAGE
 app.get("/createBook", (req, res) => {
   res.render("createBook.ejs");
 });
@@ -38,6 +39,7 @@ app.post("/createBook", async (req, res) => {
   res.redirect("/");
 });
 
+//CREATE VIEW DELETE PAGE
 app.get("/delete/:id", async (req, res) => {
   const id = req.params.id;
 
@@ -50,6 +52,7 @@ app.get("/delete/:id", async (req, res) => {
   res.redirect("/");
 });
 
+//CREATE VIEW EDITPAGE
 app.get("/editBook/:id", async (req, res) => {
   const id = req.params.id;
 
