@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Information</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+      }
+
+      .card h2 {
+        color: #333;
+      }
+
+      .card p {
+        color: #666;
+      }
+      .edit {
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(53, 53, 251);
+        margin: 0 10px;
+      }
+      .edit a,
+      .delete a {
+        color: white;
+        text-decoration: none;
+      }
+      .delete {
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(203, 6, 6);
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("components/navbar") %>
+
+    <div class="container">
+      <% book.length !=0 && book.map(item=>{ %>
+      <div class="card">
+        <h2><%- item.bookName %></h2>
+        <p>Author: <%- item.authorName %></p>
+        <p>Price: $<%- item.price %></p>
+        <p>Description : <%- item.description %></p>
+        <div>
+          <button class="delete">
+            <a href="/delete/<%- item.id %>">Delete</a>
+          </button>
+          <button class="edit">
+            <a href="/editBook/<%- item.id %>">Edit</a>
+          </button>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <%- include("components/footer") %>
+  </body>
+</html>
